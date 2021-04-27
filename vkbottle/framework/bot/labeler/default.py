@@ -119,9 +119,9 @@ class BotLabeler(ABCBotLabeler):
                 FromFuncHandler(
                     func,
                     PeerRule(True),
+                    *self.get_custom_rules(custom_rules),
                     *map(convert_shorten_filter, rules),
                     *self.auto_rules,
-                    *self.get_custom_rules(custom_rules),
                     blocking=blocking,
                 )
             )
@@ -137,9 +137,9 @@ class BotLabeler(ABCBotLabeler):
                 FromFuncHandler(
                     func,
                     PeerRule(False),
+                    *self.get_custom_rules(custom_rules),
                     *map(convert_shorten_filter, rules),
                     *self.auto_rules,
-                    *self.get_custom_rules(custom_rules),
                     blocking=blocking,
                 )
             )
@@ -164,9 +164,9 @@ class BotLabeler(ABCBotLabeler):
                     dataclass,
                     FromFuncHandler(
                         func,
+                        *self.get_custom_rules(custom_rules),
                         *map(convert_shorten_filter, rules),
                         *self.auto_rules,
-                        *self.get_custom_rules(custom_rules),
                     ),
                 )
             return func
